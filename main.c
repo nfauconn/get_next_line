@@ -21,12 +21,16 @@ void	test_gnl(int nb_fd, char **av)
 	int		j = 0;
 	int		end_all_files = 0;
 
+	printf("\n");
 	while (i < nb_fd)
 	{
 		fd[i] = open(av[i + 1], O_RDONLY);
+		if (fd[i] > 0)
+			printf("%s opened : fd%d\n", av[i + 1], fd[i]);
 		end_fd[i] = 0;
 		i++;
 	}
+	printf("\n");
 	while (!end_all_files)
 	{
 		int i = 0;
@@ -35,7 +39,7 @@ void	test_gnl(int nb_fd, char **av)
 			if (!end_fd[i])
 			{
 				line = get_next_line(fd[i]);
-				printf("line[%d][%d] = %s", fd[i], j, line);
+				printf("line[fd%d][%d] = %s", fd[i], j, line);
 				if (!line)
 				{
 					printf("\n");
@@ -49,9 +53,11 @@ void	test_gnl(int nb_fd, char **av)
 			}
 			i++;
 		}
+		printf("\n");
 		j++;
 		end_all_files = is_all_ended(end_fd, nb_fd);
 	}
+	printf("\n");
 }
 
 int	main(int ac, char **av)

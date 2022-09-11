@@ -6,7 +6,7 @@
 /*   By: nfauconn <nfauconn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/10 22:15:52 by nfauconn          #+#    #+#             */
-/*   Updated: 2022/09/11 21:38:25 by nfauconn         ###   ########.fr       */
+/*   Updated: 2022/09/11 23:30:36 by nfauconn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,8 +52,7 @@ static ssize_t	read_until_newline(int fd, char **over, char **newline_ptr)
 		if (ret < 0)
 			return (-1);
 		buff[ret] = '\0';
-		if (ret)
-			free_replace(over, ft_strjoin(*over, buff));
+		free_replace(over, ft_strjoin(*over, buff));
 	}
 	free(buff);
 	*newline_ptr = line_return(*over);
