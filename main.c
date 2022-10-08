@@ -1,17 +1,25 @@
 #include "get_next_line.h"
 
-int main()
+int main(int ac, char**av)
 {
-	int fd1 = open("file1", O_RDONLY);
-	char *str = get_next_line(fd1);
-	int	i = 0;
+	int		 fd1;
+	char	*str;
+	int		i;
 
-	while (str)
+	if (ac == 2)
 	{
-		printf("line[%d] = %s\n", i++, str);
-		free(str);
+		fd1 = open(av[1], O_RDONLY);
 		str = get_next_line(fd1);
+		i = 0;
+		while (str)
+		{
+			printf("line[%d] = %s\n", i++, str);
+			free(str);
+			str = get_next_line(fd1);
+		}
+		close(fd1);
 	}
-	close(fd1);
+	else
+		printf("please enter a file\n");
 	return (0);
 }
