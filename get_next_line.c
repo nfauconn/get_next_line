@@ -6,7 +6,7 @@
 /*   By: nfauconn <nfauconn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/10 22:15:52 by nfauconn          #+#    #+#             */
-/*   Updated: 2022/10/08 16:50:50 by nfauconn         ###   ########.fr       */
+/*   Updated: 2022/10/13 18:16:47 by nfauconn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static void	free_replace(char **over, char *joined)
 {
 	char	*tmp;
 
-	if (!over)
+	if (!over || !joined)
 		return ;
 	tmp = *over;
 	*over = ft_strdup(joined);
@@ -35,12 +35,12 @@ static void	free_replace(char **over, char *joined)
 	free(joined);
 }
 
-static ssize_t   	read_until_newline(int fd, char **over, char **newline_ptr)
+static ssize_t	read_until_newline(int fd, char **over, char **newline_ptr)
 {
 	ssize_t		ret;
 	char		*buff;
 
-	buff = (char *)malloc(sizeof (char) * (BUFFER_SIZE * 1));
+	buff = malloc(sizeof (char) * (BUFFER_SIZE + 1));
 	if (!buff)
 		return (-1);
 	if (!*over)
@@ -50,7 +50,7 @@ static ssize_t   	read_until_newline(int fd, char **over, char **newline_ptr)
 	{
 		ret = read(fd, buff, BUFFER_SIZE);
 		if (ret < 0)
-			return (-1);
+			break ;
 		buff[ret] = '\0';
 		free_replace(over, ft_strjoin(*over, buff));
 	}
@@ -61,27 +61,27 @@ static ssize_t   	read_until_newline(int fd, char **over, char **newline_ptr)
 
 char	*get_next_line(int fd)
 {
-	static char	*over[FOPEN_MAX];
+	static char	*over = NULL;
 	ssize_t		ret;
-	char		*newline_ptr[FOPEN_MAX];
+	char		*newline_ptr;
 	char		*line;
 	size_t		len;
 
-	if (fd < 0 || fd > FOPEN_MAX || BUFFER_SIZE < 1)
+	if (fd < 0 || fd > 1024 || BUFFER_SIZE < 1)
 		return (NULL);
-	newline_ptr[fd] = NULL;
-	ret = read_until_newline(fd, &over[fd], &newline_ptr[fd]);
-	if (ret < 0 || (ret == 0 && !*over[fd]))
+	newline_ptr = NULL;
+	ret = read_until_newline(fd, &over, &newline_ptr);
+	if (ret < 0 || (ret == 0 && !*over))
 	{
-		free(over[fd]);
+		free(over);
 		return (NULL);
 	}
-	line = ft_substr(over[fd], 0, newline_ptr[fd] - over[fd] + 1);
-	if (*over[fd])
+	line = ft_substr(over, 0, newline_ptr - over + 1);
+	if (*over && line)
 	{
-		len = ft_strlen(over[fd]) - ft_strlen(line);
-		free_replace(&over[fd], \
-			ft_substr(over[fd], newline_ptr[fd] - over[fd] + 1, len));
+		len = ft_strlen(over) - ft_strlen(line);
+		free_replace(&over, \
+			ft_substr(over, newline_ptr - over + 1, len));
 	}
 	return (line);
 }

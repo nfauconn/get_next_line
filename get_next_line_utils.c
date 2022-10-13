@@ -6,7 +6,7 @@
 /*   By: noe <noe@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/10 22:59:22 by nfauconn          #+#    #+#             */
-/*   Updated: 2022/10/08 17:01:03 by nfauconn         ###   ########.fr       */
+/*   Updated: 2022/10/13 17:58:29 by nfauconn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,16 +50,16 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 		len = s_len - start;
 	if (start > s_len)
 	{
-		new = (char *)malloc(sizeof(char) * 1);
+		new = malloc(sizeof(char) * 1);
 		if (!new)
 			return (NULL);
 		new[0] = '\0';
 		return (new);
 	}
-	new = (char *)malloc(sizeof(char) * (len + 1));
+	new = malloc(sizeof(char) * (len + 1));
 	if (!new)
 		return (NULL);
-	new = (char *)ft_memcpy(new, s + start, len + 1);
+	new = ft_memcpy(new, s + start, len + 1);
 	new[len] = '\0';
 	return (new);
 }
@@ -69,9 +69,9 @@ char	*ft_strdup(const char *s1)
 	char	*tab;
 	int		i;
 
-	tab = (char *)malloc(sizeof(char) * (ft_strlen(s1) + 1));
+	tab = malloc(sizeof(char) * (ft_strlen(s1) + 1));
 	if (!tab)
-		return (0);
+		return (NULL);
 	i = 0;
 	while (s1 && s1[i])
 	{
@@ -91,7 +91,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	if (!s1 || !s2)
 		return (NULL);
 	i = ft_strlen(s1) + ft_strlen(s2);
-	new = (char *)malloc(sizeof(char) * (i + 1));
+	new = malloc(sizeof(char) * (i + 1));
 	if (!new)
 		return (NULL);
 	i = 0;
