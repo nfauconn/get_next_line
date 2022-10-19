@@ -9,13 +9,14 @@ int main(int ac, char**av)
 	if (ac == 2)
 	{
 		fd1 = open(av[1], O_RDONLY);
-		str = get_next_line(fd1);
 		i = 0;
-		while (str)
+		while (1)
 		{
-			printf("line[%d] = %s\n", i++, str);
-			free(str);
 			str = get_next_line(fd1);
+			printf("line[%d] = %s\n", i++, str);
+			if (!str)
+				break ;
+			free(str);
 		}
 		close(fd1);
 	}
