@@ -6,7 +6,7 @@
 /*   By: noe <noe@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/10 21:54:50 by nfauconn          #+#    #+#             */
-/*   Updated: 2022/10/21 16:11:45 by nfauconn         ###   ########.fr       */
+/*   Updated: 2022/10/21 16:36:38 by nfauconn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,12 @@
 # include <stdlib.h>
 # include <sys/types.h>
 # include <unistd.h>
+
+typedef struct	s_str
+{
+	char	*str;
+	size_t	len;
+}	t_str;
 
 /* GNL */
 char	*get_next_line(int fd);

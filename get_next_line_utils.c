@@ -6,7 +6,7 @@
 /*   By: nfauconn <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/21 15:41:00 by nfauconn          #+#    #+#             */
-/*   Updated: 2022/10/21 16:21:03 by nfauconn         ###   ########.fr       */
+/*   Updated: 2022/10/21 17:03:54 by nfauconn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,10 @@ char	*ft_strdup(char *s1)
 {
 	char	*new;
 	size_t	i;
+	size_t	len;
 
-	new = malloc(sizeof(char) * (ft_strlen(s1) + 1));
+	len = ft_strlen(s1);
+	new = malloc(sizeof(char) * (len + 1));
 	if (!new)
 		return (NULL);
 	i = 0;
@@ -46,9 +48,9 @@ char	*ft_substr(char *source, size_t start, size_t len)
 	size_t	sourcelen;
 	size_t	i;
 
-	if (!source || len == 0 || start > ft_strlen(source))
-		return (ft_strdup(""));
 	sourcelen = ft_strlen(source);
+	if (!len)
+		return (ft_strdup(""));
 	new = malloc(sizeof(char) * (len + 1));
 	i = 0;
 	while (source[start] && i < len)
@@ -64,14 +66,7 @@ char	*ft_strjoin(char *s1, char *s2)
 	size_t	i;
 	size_t	j;
 
-	if (!s1 && !s2)
-		return (ft_strdup(""));
-	else if (s1 && s2)
-		newlen = ft_strlen(s1) + ft_strlen(s2);
-	else if (s1 && !s2)
-		newlen = ft_strlen(s1);
-	else if (!s2 && s1)
-		newlen = ft_strlen(s2);
+	newlen = ft_strlen(s1) + ft_strlen(s2);
 	new = malloc(sizeof (char) * (newlen + 1));
 	if (!new)
 		return (NULL);
@@ -92,7 +87,8 @@ char	*ft_replace(char **old, char *new)
 
 	tmp = *old;
 	*old = new;
-	free(tmp);
+	if (tmp)
+		free(tmp);
 	return (NULL);
 }
 

@@ -6,13 +6,13 @@
 /*   By: nfauconn <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/21 15:48:08 by nfauconn          #+#    #+#             */
-/*   Updated: 2022/10/21 16:17:36 by nfauconn         ###   ########.fr       */
+/*   Updated: 2022/10/21 17:14:48 by nfauconn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-char	*nl_chr(char *s)
+static char	*nl_chr(char *s)
 {
 	while (*s)
 	{
@@ -23,18 +23,53 @@ char	*nl_chr(char *s)
 	return (NULL);
 }
 
+static char	*fill_line(char *rest, char *nl_ptr)
+{
+	char	*line;
+	size_t	linelen;
+	char	*newrest;
+	size_t	newrestlen;
+
+	if (nl_ptr)
+	{
+		linelen = nl_ptr - rest;
+		line = ft_substr(rest, 0, linelen + 1);
+		if (!line)
+			return (ft_replace(&rest, NULL));
+		newrestlen = ft_strlen(rest) - linelen;
+		newrest = ft_substr(rest, linelen, newrestlen);
+		if (!newrest)
+		{
+			free(line);
+			return (ft_replace(&rest, NULL));
+		}
+		ft_replace(&rest, newrest);
+	}
+	else
+	{
+		line = ft_strdup(rest);
+		if (!line)
+			return (ft_replace(&rest, NULL));
+	}
+	return (line);
+}
+
 char	*get_next_line(int fd)
 {
-	char		*line;
 	char		buf[BUFFER_SIZE];
 	static char	*rest;
+	static char	*newrest;
 	char		*nl_ptr;
 	ssize_t		ret;
 
 	if (fd < 0 || BUFFER_SIZE < 1)
 		return (NULL);
 	if (!rest)
+	{
 		rest = ft_strdup("");
+		if (!rest)
+			return (NULL);
+	}
 	nl_ptr = NULL;
 	ret = 1;
 	while (ret && !nl_ptr)
@@ -43,12 +78,12 @@ char	*get_next_line(int fd)
 		if (ret < 0 || (ret == 0 && !*rest))
 			return (ft_replace(&rest, NULL));
 		buf[ret] = '\0';
-		ft_replace(&rest, ft_strjoin(rest, buf));
+		newrest = ft_strjoin(rest, buf);
+		if (!newrest)
+			return (ft_replace(&rest, NULL));
+		ft_replace(&rest, newrest);
 		nl_ptr = nl_chr(rest);
 	}
-	line = ft_substr(rest, 0, nl_ptr - rest + 1);
-	ft_replace(&rest, \
-			ft_substr(rest, ft_strlen(line), ft_strlen(rest) - ft_strlen(line)));
-	return (line);
+	return (fill_line(rest, nl_ptr));
 }
 
