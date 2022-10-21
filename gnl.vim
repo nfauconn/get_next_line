@@ -33,11 +33,11 @@ set winminheight=0
 set winheight=1
 set winminwidth=0
 set winwidth=1
-exe 'vert 1resize ' . ((&columns * 128 + 128) / 257)
-exe '2resize ' . ((&lines * 44 + 40) / 80)
-exe 'vert 2resize ' . ((&columns * 128 + 128) / 257)
-exe '3resize ' . ((&lines * 33 + 40) / 80)
-exe 'vert 3resize ' . ((&columns * 128 + 128) / 257)
+exe 'vert 1resize ' . ((&columns * 90 + 90) / 180)
+exe '2resize ' . ((&lines * 37 + 38) / 76)
+exe 'vert 2resize ' . ((&columns * 89 + 90) / 180)
+exe '3resize ' . ((&lines * 36 + 38) / 76)
+exe 'vert 3resize ' . ((&columns * 89 + 90) / 180)
 argglobal
 setlocal fdm=manual
 setlocal fde=0
@@ -49,36 +49,16 @@ setlocal fdn=20
 setlocal fen
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 52 - ((51 * winheight(0) + 39) / 78)
-if s:l < 1 | let s:l = 1 | endif
-keepjumps exe s:l
-normal! zt
-keepjumps 52
-normal! 0
-wincmd w
-argglobal
-if bufexists("get_next_line_utils.c") | buffer get_next_line_utils.c | else | edit get_next_line_utils.c | endif
-balt get_next_line_exam.c
-setlocal fdm=manual
-setlocal fde=0
-setlocal fmr={{{,}}}
-setlocal fdi=#
-setlocal fdl=0
-setlocal fml=1
-setlocal fdn=20
-setlocal fen
-silent! normal! zE
-let &fdl = &fdl
-let s:l = 63 - ((36 * winheight(0) + 22) / 44)
+let s:l = 63 - ((47 * winheight(0) + 37) / 74)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
 keepjumps 63
-normal! 020|
+normal! 05|
 wincmd w
 argglobal
-if bufexists("~/libft42/ft_substr.c") | buffer ~/libft42/ft_substr.c | else | edit ~/libft42/ft_substr.c | endif
-balt get_next_line.c
+if bufexists("main.c") | buffer main.c | else | edit main.c | endif
+balt get_next_line_exam2.c
 setlocal fdm=manual
 setlocal fde=0
 setlocal fmr={{{,}}}
@@ -89,26 +69,43 @@ setlocal fdn=20
 setlocal fen
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 15 - ((5 * winheight(0) + 16) / 33)
+let s:l = 15 - ((14 * winheight(0) + 18) / 37)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
 keepjumps 15
+normal! 036|
+wincmd w
+argglobal
+if bufexists("get_next_line.c") | buffer get_next_line.c | else | edit get_next_line.c | endif
+balt main.c
+setlocal fdm=manual
+setlocal fde=0
+setlocal fmr={{{,}}}
+setlocal fdi=#
+setlocal fdl=0
+setlocal fml=1
+setlocal fdn=20
+setlocal fen
+silent! normal! zE
+let &fdl = &fdl
+let s:l = 75 - ((17 * winheight(0) + 18) / 36)
+if s:l < 1 | let s:l = 1 | endif
+keepjumps exe s:l
+normal! zt
+keepjumps 75
 normal! 0
 wincmd w
-exe 'vert 1resize ' . ((&columns * 128 + 128) / 257)
-exe '2resize ' . ((&lines * 44 + 40) / 80)
-exe 'vert 2resize ' . ((&columns * 128 + 128) / 257)
-exe '3resize ' . ((&lines * 33 + 40) / 80)
-exe 'vert 3resize ' . ((&columns * 128 + 128) / 257)
+2wincmd w
+exe 'vert 1resize ' . ((&columns * 90 + 90) / 180)
+exe '2resize ' . ((&lines * 37 + 38) / 76)
+exe 'vert 2resize ' . ((&columns * 89 + 90) / 180)
+exe '3resize ' . ((&lines * 36 + 38) / 76)
+exe 'vert 3resize ' . ((&columns * 89 + 90) / 180)
 tabnext 1
-badd +44 get_next_line_exam2.c
-badd +67 get_next_line.c
-badd +17 get_next_line_exam.c
-badd +0 test
-badd +0 get_next_line_utils.c
-badd +34 ~/minishell/libft/srcs/replace_copy_join_iter/no_alloc/ft_strlcat.c
-badd +0 ~/libft42/ft_substr.c
+badd +103 get_next_line_exam2.c
+badd +1 main.c
+badd +0 get_next_line.c
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0
   silent exe 'bwipe ' . s:wipebuf
 endif
@@ -121,6 +118,7 @@ if filereadable(s:sx)
   exe "source " . fnameescape(s:sx)
 endif
 let &g:so = s:so_save | let &g:siso = s:siso_save
+nohlsearch
 doautoall SessionLoadPost
 unlet SessionLoad
 " vim: set ft=vim :
