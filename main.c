@@ -15,9 +15,12 @@ int main(int ac, char**av)
 		while (1)
 		{
 			str = get_next_line(fd1);
-			printf("line[%d] = %s\n", i++, str);
 			if (!str)
+			{
+				printf("str = null\n");
 				break ;
+			}
+			printf("line[%d] = %s\n", i++, str);
 			free(str);
 		}
 		close(fd1);

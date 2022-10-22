@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nfauconn <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: nfauconn <nfauconn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/21 15:48:08 by nfauconn          #+#    #+#             */
-/*   Updated: 2022/10/21 17:14:48 by nfauconn         ###   ########.fr       */
+/*   Updated: 2022/10/22 17:28:49 by nfauconn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static char	*nl_chr(char *s)
 	return (NULL);
 }
 
-static char	*fill_line(char *rest, char *nl_ptr)
+static char	*fill_line(char **rest, char *nl_ptr)
 {
 	char	*line;
 	size_t	linelen;
@@ -32,25 +32,26 @@ static char	*fill_line(char *rest, char *nl_ptr)
 
 	if (nl_ptr)
 	{
-		linelen = nl_ptr - rest;
-		line = ft_substr(rest, 0, linelen + 1);
+		linelen = nl_ptr - *rest;
+		line = ft_substr(*rest, 0, linelen + 1);
 		if (!line)
-			return (ft_replace(&rest, NULL));
-		newrestlen = ft_strlen(rest) - linelen;
-		newrest = ft_substr(rest, linelen, newrestlen);
+			return (ft_replace(rest, NULL));
+		newrestlen = ft_strlen(*rest) - linelen;
+		newrest = ft_substr(*rest, linelen + 1, newrestlen);
 		if (!newrest)
 		{
 			free(line);
-			return (ft_replace(&rest, NULL));
+			return (ft_replace(rest, NULL));
 		}
-		ft_replace(&rest, newrest);
+		ft_replace(rest, newrest);
+	}
+	else if (**rest)
+	{
+		line = ft_strdup(*rest);
+		return (ft_replace(rest, NULL));
 	}
 	else
-	{
-		line = ft_strdup(rest);
-		if (!line)
-			return (ft_replace(&rest, NULL));
-	}
+		return (ft_replace(rest, NULL));
 	return (line);
 }
 
@@ -84,6 +85,6 @@ char	*get_next_line(int fd)
 		ft_replace(&rest, newrest);
 		nl_ptr = nl_chr(rest);
 	}
-	return (fill_line(rest, nl_ptr));
+	return (fill_line(&rest, nl_ptr));
 }
 
