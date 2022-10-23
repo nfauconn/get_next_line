@@ -6,20 +6,22 @@
 /*   By: noe <noe@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/10 21:54:50 by nfauconn          #+#    #+#             */
-/*   Updated: 2022/10/21 16:36:38 by nfauconn         ###   ########.fr       */
+/*   Updated: 2022/10/23 18:39:29 by nfauconn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H
 
-#ifndef BUFFER_SIZE
-# define BUFFER_SIZE 42
-#endif
-
 # include <stdlib.h>
 # include <sys/types.h>
 # include <unistd.h>
+
+typedef struct s_newstr
+{
+	char	*str;
+	size_t	len;
+}	t_newstr;
 
 /* GNL */
 char	*get_next_line(int fd);
