@@ -23,6 +23,23 @@ static char	*nl_chr(char *s)
 	return (NULL);
 }
 
+static char	*alloc_buffers(char **buf, char **rest)
+{
+	*buf = malloc(sizeof (char) * (BUFFER_SIZE + 1));
+	if (!*buf)
+		return (NULL);
+	if (!*rest)
+	{
+		*rest = ft_strdup("");
+		if (!*rest)
+		{
+			free(*buf);
+			return (NULL);
+		}
+	}
+	return (*rest);
+}
+
 static char	*fill_line(char **rest, char *nl_ptr)
 {
 	char	*line;
@@ -30,59 +47,58 @@ static char	*fill_line(char **rest, char *nl_ptr)
 	char	*newrest;
 	size_t	newrestlen;
 
+	line = NULL;
 	if (nl_ptr)
 	{
 		linelen = nl_ptr - *rest;
 		line = ft_substr(*rest, 0, linelen + 1);
 		if (!line)
-			return (ft_replace(rest, NULL));
+			return (free_replace(rest, NULL));
 		newrestlen = ft_strlen(*rest) - linelen;
 		newrest = ft_substr(*rest, linelen + 1, newrestlen);
 		if (!newrest)
 		{
 			free(line);
-			return (ft_replace(rest, NULL));
+			return (free_replace(rest, NULL));
 		}
-		ft_replace(rest, newrest);
-	}
-	else if (**rest)
-	{
-		line = ft_strdup(*rest);
-		return (ft_replace(rest, NULL));
+		free_replace(rest, newrest);
 	}
 	else
-		return (ft_replace(rest, NULL));
+	{
+		line = ft_strdup(*rest);
+		free_replace(rest, NULL);
+	}
 	return (line);
 }
 
 char	*get_next_line(int fd)
 {
-	char		buf[BUFFER_SIZE];
+	char		*buf;
 	static char	*rest;
-	static char	*newrest;
+	char		*newrest;
 	char		*nl_ptr;
 	ssize_t		ret;
 
 	if (fd < 0 || BUFFER_SIZE < 1)
 		return (NULL);
-	if (!rest)
-	{
-		rest = ft_strdup("");
-		if (!rest)
-			return (NULL);
-	}
 	nl_ptr = NULL;
 	ret = 1;
 	while (ret && !nl_ptr)
 	{
+		if (!alloc_buffers(&buf, &rest))
+			return (NULL);
 		ret = read(fd, buf, BUFFER_SIZE);
 		if (ret < 0 || (ret == 0 && !*rest))
-			return (ft_replace(&rest, NULL));
+		{
+			free(buf);
+			return (free_replace(&rest, NULL));
+		}
 		buf[ret] = '\0';
 		newrest = ft_strjoin(rest, buf);
+		free(buf);
 		if (!newrest)
-			return (ft_replace(&rest, NULL));
-		ft_replace(&rest, newrest);
+			return (free_replace(&rest, NULL));
+		free_replace(&rest, newrest);
 		nl_ptr = nl_chr(rest);
 	}
 	return (fill_line(&rest, nl_ptr));

@@ -49,7 +49,7 @@ char	*ft_substr(char *source, size_t start, size_t len)
 	size_t	i;
 
 	sourcelen = ft_strlen(source);
-	if (!len)
+	if (!len || start > sourcelen)
 		return (ft_strdup(""));
 	new = malloc(sizeof(char) * (len + 1));
 	i = 0;
@@ -81,7 +81,7 @@ char	*ft_strjoin(char *s1, char *s2)
 	return (new);
 }
 
-char	*ft_replace(char **old, char *new)
+char	*free_replace(char **old, char *new)
 {
 	char	*tmp;
 

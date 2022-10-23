@@ -21,12 +21,6 @@
 # include <sys/types.h>
 # include <unistd.h>
 
-typedef struct	s_str
-{
-	char	*str;
-	size_t	len;
-}	t_str;
-
 /* GNL */
 char	*get_next_line(int fd);
 
@@ -35,6 +29,6 @@ size_t	ft_strlen(char *s);
 char	*ft_substr(char *source, size_t start, size_t len);
 char	*ft_strdup(char *s1);
 char	*ft_strjoin(char *s1, char *s2);
-char	*ft_replace(char **old, char *new);
+char	*free_replace(char **old, char *new);
 
 #endif
