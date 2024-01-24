@@ -6,7 +6,7 @@
 /*   By: nfauconn <nfauconn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/21 15:48:08 by nfauconn          #+#    #+#             */
-/*   Updated: 2022/10/23 18:44:40 by nfauconn         ###   ########.fr       */
+/*   Updated: 2024/01/24 14:42:11 by nfauconn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static char	*nl_chr(char *s)
 	return (NULL);
 }
 
-static char	*alloc_buffers(char **buf, char **rest)
+static char	*all(char **buf, char **rest)
 {
 	*buf = malloc(sizeof (char) * (BUFFER_SIZE + 1));
 	if (!*buf)
@@ -79,7 +79,7 @@ static char	*fill_line(char **rest, char *nl_ptr)
 char	*get_next_line(int fd)
 {
 	char		*buf;
-	static char	*rest;
+	static char	*rest[PATH_MAX];
 	char		*nl_ptr;
 	ssize_t		ret;
 
@@ -87,20 +87,20 @@ char	*get_next_line(int fd)
 	ret = 1;
 	while (ret && !nl_ptr)
 	{
-		if (fd < 0 || BUFFER_SIZE < 1 || !alloc_buffers(&buf, &rest))
+		if (fd < 0 || fd > PATH_MAX || BUFFER_SIZE < 1 || !all(&buf, &rest[fd]))
 			return (NULL);
 		ret = read(fd, buf, BUFFER_SIZE);
-		if (ret < 0 || (ret == 0 && !*rest))
+		if (ret < 0 || (ret == 0 && !*rest[fd]))
 		{
 			free(buf);
-			return (free_replace(&rest, NULL));
+			return (free_replace(&rest[fd], NULL));
 		}
 		buf[ret] = '\0';
-		free_replace(&rest, ft_strjoin(rest, buf));
+		free_replace(&rest[fd], ft_strjoin(rest[fd], buf));
 		free(buf);
-		if (!rest)
+		if (!rest[fd])
 			return (NULL);
-		nl_ptr = nl_chr(rest);
+		nl_ptr = nl_chr(rest[fd]);
 	}
-	return (fill_line(&rest, nl_ptr));
+	return (fill_line(&rest[fd], nl_ptr));
 }
