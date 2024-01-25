@@ -1,4 +1,5 @@
-[![en](https://img.shields.io/badge/lang-en-pink.svg)](https://github.com/nfauconn/get_next_line/blob/master/README.md)
+[![en](https://img.shields.io/badge/lang-en-purple.svg)](https://github.com/nfauconn/get_next_line/blob/master/README.md)
+[![fr](https://img.shields.io/badge/lang-fr-pink.svg)](https://github.com/nfauconn/get_next_line/blob/master/README.fr.md)
 
 # Project: Get Next Line
 
@@ -9,24 +10,19 @@ Developing a function that allows us to read a text file referenced by the file 
 
 ### 🌐 Language: C 🌐
 
-- **Static Variables:** The project introduced me to the concept and utility of static variables in C, showing me how they can preserve state information across multiple function calls.
+- **Static Variables:** preserve state information across multiple function calls.
 
 
 ### 🔧 Development Practices and Tools 🔧
 
-- **File Descriptor Management:** It allowed me to deepen my understanding of file descriptors and their manipulation in C, teaching me how to efficiently and safely read data from a file descriptor.
+- **File Descriptor Management:** efficiently and safely read data from a file descriptor.
 
-- **Memory Management:** The project enhanced my ability to manage memory dynamically. It taught me the importance of careful memory allocation and deallocation to avoid memory leaks and ensure proper memory hygiene.
+- **Memory Management:** careful memory allocation and deallocation to avoid memory leaks and ensure proper memory hygiene.
 
-- **Buffer Management:** It provided me with practical experience in managing buffers, including how to effectively read and process data stored in a buffer.
+- **Buffer Management:** effectively read and process data stored in a buffer.
 
-- **Code Organization and Modularization:** It taught me how to organize my code into separate, modular files, enhancing maintainability and readability.
-
-- **Working with Compilers and Makefiles:** It expanded my understanding of the compilation process, including the use of compiler flags and Makefiles, thus streamlining the build process of my projects.
-
-- **Adherence to Norms and Coding Standards:** The project underscored the significance of writing not just functional but also clean and concise code. By enforcing a subject-specific constraint of a maximum of two files, and aligning with the school's rigorous coding norms—limiting each file to no more than five functions and each function to a maximum of 25 lines of 80 columns—it emphasized the necessity of brevity and clarity in coding. This structured approach, balancing project requirements and school norms, compelled me to write code that is not only operational but also streamlined, readable, and in strict adherence to both the project's guidelines and the school's high coding standards.
-
-- **Peer Code Review and Testing:** As all projects in 42, it exposed me to the practice of code review and testing, improving my ability to critically analyze both my code and that of my peers, and fostering a mindset of continuous improvement and refinement.
+- **Adherence to Norms and Coding Standards:** write code that is not only operational but also streamlined, readable, and in strict adherence to both the project's guidelines and the school's high coding standards
+  > *max 5 functions per file, max 25 lines per function, max 80 col per line*
 
 ## 📋 Subject 📋
 
