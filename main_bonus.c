@@ -6,10 +6,12 @@
 /*   By: nfauconn <nfauconn@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/08 15:45:09 by nfauconn          #+#    #+#             */
-/*   Updated: 2024/01/24 14:42:25 by nfauconn         ###   ########.fr       */
+/*   Updated: 2024/01/26 15:17:26 by nfauconn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <fcntl.h>
+#include <stdio.h>
 #include "get_next_line_bonus.h"
 
 static int	is_all_ended(int *end_fd, int nb_fd)
