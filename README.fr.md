@@ -25,6 +25,8 @@ Développer une fonction qui nous permet de lire un fichier texte référencé p
 
 ## 📋 Sujet 📋
 
+Projet solo
+
 ## Exigences et Règles
 
 ### Langage et Standards
