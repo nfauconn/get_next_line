@@ -6,6 +6,22 @@ i# Projet : Get Next Line
 ## 🏁 Objectif 🏁
 Développer une fonction qui nous permet de lire un fichier texte référencé par le descripteur de fichier, une ligne à la fois, par des appels successifs à cette fonction.
 
+## 🚀 Utilisation 🚀
+
+Les fichiers se trouvent dans `./test_files/`
+
+```shell
+> cc -Wall -Wextra -Werror main.c get_next_line.c get_next_line_utils.c -D BUFFER_SIZE=<size>
+> ./a.out <file>
+```
+
+#### Bonus (+ d'un fichier)
+
+```shell
+> cc -Wall -Wextra -Werror main_bonus.c get_next_line_bonus.c get_next_line_utils_bonus.c -D BUFFER_SIZE=<size>
+> ./a.out <file1> <file2> <file3> <...>
+```
+
 ## 💡 Apprentissages 💡
 
 ### 🌐 Langage : C 🌐

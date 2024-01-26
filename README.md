@@ -6,12 +6,27 @@
 ## 🏁 Goal 🏁
 Developing a function that allows us to read a text file referenced by the file descriptor, one line at a time, through successive calls to this function.
 
+## 🚀 Usage 🚀
+
+Files are located in `./test_files/`
+
+```shell
+> cc -Wall -Wextra -Werror main.c get_next_line.c get_next_line_utils.c -D BUFFER_SIZE=<size>
+> ./a.out <file>
+```
+
+#### Bonus (multiple fds)
+
+```shell
+> cc -Wall -Wextra -Werror main_bonus.c get_next_line_bonus.c get_next_line_utils_bonus.c -D BUFFER_SIZE=<size>
+> ./a.out <file1> <file2> <file3> <...>
+```
+
 ## 💡 Learning 💡
 
 ### 🌐 Language: C 🌐
 
 - **Static Variables:** preserve state information across multiple function calls.
-
 
 ### 🔧 Development Practices and Tools 🔧
 
@@ -43,7 +58,7 @@ Solo project
 - The BUFFER_SIZE value will be modified during peer evaluation and by the Moulinette (the evaluating program of 42) for testing purposes.
 - The compilation command will be similar to: 
 ```bash
-cc -Wall -Wextra -Werror -D BUFFER_SIZE=42 <files>.c
+cc -Wall -Wextra -Werror -D BUFFER_SIZE=42 <files>
 ```
 
 ### Functionality
