@@ -26,6 +26,8 @@ Developing a function that allows us to read a text file referenced by the file 
 
 ## 📋 Subject 📋
 
+Solo project
+
 ## Requirements and Rules
 
 ### Language and Standards
