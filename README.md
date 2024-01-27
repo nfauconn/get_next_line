@@ -10,7 +10,7 @@ Developing a function that allows us to read a text file referenced by the file 
 
 ```shell
 git clone git@github.com:nfauconn/get_next_line.git
-cd Project
+cd get_next_line/Project
 ```
 
 Files are located in `test_files/`

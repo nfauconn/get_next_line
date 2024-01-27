@@ -10,7 +10,7 @@ Développer une fonction qui nous permet de lire un fichier texte référencé p
 
 ```shell
 git clone git@github.com:nfauconn/get_next_line.git
-cd Project
+cd get_next_line/Project
 ```
 
 Les fichiers se trouvent dans `test_files/`
