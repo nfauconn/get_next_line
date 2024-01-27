@@ -1,3 +1,4 @@
-a.out
 .vscode
+Project/a.out
+Project/*.o
 *.vim
