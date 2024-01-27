@@ -8,7 +8,12 @@ Développer une fonction qui nous permet de lire un fichier texte référencé p
 
 ## 🚀 Utilisation 🚀
 
-Les fichiers se trouvent dans `./test_files/`
+```shell
+git clone git@github.com:nfauconn/get_next_line.git
+cd Project
+```
+
+Les fichiers se trouvent dans `test_files/`
 
 ```shell
 > cc -Wall -Wextra -Werror main.c get_next_line.c get_next_line_utils.c -D BUFFER_SIZE=<size>

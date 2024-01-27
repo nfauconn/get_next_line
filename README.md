@@ -8,7 +8,12 @@ Developing a function that allows us to read a text file referenced by the file 
 
 ## 🚀 Usage 🚀
 
-Files are located in `./test_files/`
+```shell
+git clone git@github.com:nfauconn/get_next_line.git
+cd Project
+```
+
+Files are located in `test_files/`
 
 ```shell
 > cc -Wall -Wextra -Werror main.c get_next_line.c get_next_line_utils.c -D BUFFER_SIZE=<size>
