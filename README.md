@@ -4,7 +4,7 @@
 # Project: Get Next Line
 
 ## 🏁 Goal 🏁
-Developing a function that allows us to read a text file referenced by the file descriptor, one line at a time, through successive calls to this function.
+Developing a function that reads a text file referenced by the file descriptor, one line at a time, through successive calls to this function.
 
 ## 🚀 Usage 🚀
 
@@ -45,8 +45,6 @@ Files are located in `test_files/`
   > *max 5 functions per file, max 25 lines per function, max 80 col per line*
 
 ## 📋 Subject 📋
-
-Solo project
 
 ## Requirements and Rules
 

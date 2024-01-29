@@ -4,7 +4,7 @@
 i# Projet : Get Next Line
 
 ## 🏁 Objectif 🏁
-Développer une fonction qui nous permet de lire un fichier texte référencé par le descripteur de fichier, une ligne à la fois, par des appels successifs à cette fonction.
+Développer une fonction qui lit un fichier texte référencé par le descripteur de fichier, une ligne à la fois, par des appels successifs à cette fonction.
 
 ## 🚀 Utilisation 🚀
 
@@ -45,8 +45,6 @@ Les fichiers se trouvent dans `test_files/`
   > *max 5 fonctions par fichier, max 25 lignes par function, max 80 colonnes par ligne*
 
 ## 📋 Sujet 📋
-
-Projet solo
 
 ## Exigences et Règles
 
