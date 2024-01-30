@@ -7,6 +7,8 @@ A function that reads a text file referenced by the file descriptor, one line at
   
 External Functions Allowed: `read`, `malloc`, `free`. No global variables allowed.
 
+*C Programming Language* • *Static Variables* • *File Descriptor Management* • *Buffer Management* • *Memory Management* • *Error Management* • *Coding Standards (Norm Compliance)* • *Compilation Automation with Makefile* 
+
 ## Usage
 
 ```shell
@@ -36,17 +38,3 @@ Files are located in `test_files/`
 > cc -Wall -Wextra -Werror -D BUFFER_SIZE=1000 main_bonus.c get_next_line_bonus.c get_next_line_utils_bonus.c 
 > ./a.out <file1> <file2> <file3> <...>
 ```
-
-## Skills
-
-- **Static Variables:** preserve state information across multiple function calls.
-
-- **File Descriptor Management:** efficiently and safely read data from file descriptors.
-
-- **Buffer Management:** effectively read and process data stored in a buffer.
-
-- **Error Management:** comprehensive error checking and response mechanisms, ensuring the program behaves predictably under various scenarios.
-
-- **Low-Level Programming Proficiency:** memory, pointers, and system calls at a low level.
-
-- **Adherence to Norms and Coding Standards:** write code that is not only operational but also streamlined, readable, and in strict adherence to both the project's guidelines and the school's high coding standards
