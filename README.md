@@ -1,13 +1,11 @@
 [![en](https://img.shields.io/badge/lang-en-purple.svg)](https://github.com/nfauconn/get_next_line/blob/master/README.md)
 [![fr](https://img.shields.io/badge/lang-fr-pink.svg)](https://github.com/nfauconn/get_next_line/blob/master/README.fr.md)
 
-# Project: Get Next Line
+# Get Next Line
 
-## Summary
-
-Developing a function that reads a text file referenced by the file descriptor, one line at a time, through successive calls to this function.
+A function that reads a text file referenced by the file descriptor, one line at a time, through successive calls to this function.
   
-External Functions Allowed: `read`, `malloc`, `free`
+External Functions Allowed: `read`, `malloc`, `free`. No global variables allowed.
 
 ## Usage
 
@@ -32,7 +30,7 @@ Files are located in `test_files/`
 ```
  Feel free to test different BUFFER_SIZE values.
 
-#### Bonus (multiple fds)
+#### Usage with multiple fds
 
 ```shell
 > cc -Wall -Wextra -Werror -D BUFFER_SIZE=1000 main_bonus.c get_next_line_bonus.c get_next_line_utils_bonus.c 
