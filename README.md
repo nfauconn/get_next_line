@@ -37,7 +37,7 @@ Files are located in `test_files/`
 > ./a.out <file1> <file2> <file3> <...>
 ```
 
-## Specific skills
+## Skills
 
 - **Static Variables:** preserve state information across multiple function calls.
 
