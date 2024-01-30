@@ -46,6 +46,3 @@ Files are located in `test_files/`
 - **Memory Management:** careful memory allocation and deallocation to avoid memory leaks and ensure proper memory hygiene.
 
 - **Buffer Management:** effectively read and process data stored in a buffer.
-
-- **Adherence to Norms and Coding Standards:** write code that is not only operational but also streamlined, readable, and in strict adherence to both the project's guidelines and the school's high coding standards
-  > *max 5 functions per file, max 25 lines per function, max 80 col per line*
