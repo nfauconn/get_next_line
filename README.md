@@ -20,7 +20,7 @@ cd get_next_line/Project
   - Files: `get_next_line.h`, `get_next_line.c`, `get_next_line_utils.c`
   - Return Value: 
     - The content of the line read, followed by a '\n', except when the end of the file has been reached (line returned as it is): correct behavior
-    - `NULL`: nothing else to read or an error occurred
+    - `NULL`: nothing else to read OR an error occurred
 
 - `get_next_line()` has undefined behavior if, between two calls, the file pointed to by the file descriptor has been modified while the file has not been completely read.
 - Reading from a binary file is considered to have undefined behavior.
