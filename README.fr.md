@@ -13,7 +13,7 @@ Fonctions externes autorisées : `read`, `malloc`, `free`. Pas de variables glob
 
 ```shell
 git clone git@github.com:nfauconn/get_next_line.git
-cd get_next_line/Projet
+cd get_next_line/Project
 ```
 
   - Fichiers : `get_next_line.h`, `get_next_line.c`, `get_next_line_utils.c`
